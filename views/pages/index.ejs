@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+<main>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="jumbotron">
+          <h1>Welcome!</h1>
+          <p>new and improved!</p>
+   
+          <header class="flexbox-header">
+            currently playing:
+          
+            <figure>
+              <figcaption>Shostakovich waltz no 2</figcaption>
+              <audio controls src="https://mason.gmu.edu/~cmoore44/swe432/iteration2/media/dmitri-shostakovich-waltz-no-2.mp3">
+                  <a href="https://mason.gmu.edu/~cmoore44/swe432/iteration2/media/dmitri-shostakovich-waltz-no-2.mp3"> Download audio </a>
+              </audio>
+            </figure>
+            <h2>Previous playlists</h2>
+      <p><%= tagline %></p>
+      <table>
+        <% playlists.forEach(function(playlist) { %>
+          <thead>
+            <tr>
+            <th><%= playlist.num %></th>
+            <th><strong><%= playlist.name %></strong></th>
+            <td><button class="table__like-icon" onclick="change()" type="button" id="like">click to like</button></td>
+          </tr>
+          </thead>
+        <% }); %>
+      </table> 
+        </div>
+      </div>
+    
+    
+	</header>
+  <div class="col-sm-4">
+    <div class="well">
+      <h3>todays schedule <button type="edit">edit</button></h3>
+      
+		
+          <h2>schedule</h2>
+		<table>
+		  <thead>
+			<tr>
+			  <th>time</th>
+			  <th>activity</th>
+			  <th>desc</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td>10-11</td>
+			  <td>dj intro/morning talk</td>
+			  <td>dj speaks to audience about any events/what is going to happen later</td>
+			</tr>
+			<tr>
+			  <td>11-12</td>
+			  <td>playlist 1</td>
+			  <td>uninterrupted music</td>
+			</tr>
+			<tr>
+			  <td>12-12:10</td>
+			  <td>ads</td>
+			  <td>predetermined ads play</td>
+			</tr>
+			<tr>
+			  <td>12:10-12:30</td>
+			  <td>introduce next playlist</td>
+			  <td>dj talks to audience and updates</td>
+			</tr>
+			<tr>
+			  <td>12:30-1:30</td>
+			  <td>playlist 2</td>
+			  <td>uninterrupted music</td>
+			</tr>
+		  </tbody>
+		</table>
+    </div>
+  </div>
+  </div>
+  <body style="background-color:lightskyblue;"></body>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
+<script>function change(){
+  var likeIcon = document.querySelectorAll(`.table__like-icon`);
+  for (var icon of likeIcon) {
+      icon.addEventListener('click', likeIconIsClicked);
+    }
+   
+}
+function likeIconIsClicked() {
+  this.classList.toggle(`table__like-icon_active`);
+  
+
+if(this.value=="liked"){
+   this.value="click to like";
+   this.innerHTML="click to like";
+}
+else {
+  this.value="liked";
+  this.innerHTML="liked";
+}}</script>
